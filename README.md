@@ -18,10 +18,20 @@ class Nachos(MenuItem):
         super().__init__("Nachos with a topping", 18000, "Corn chips, topping at client's choice, melted cheese, pico de gallo.")
         self.topping = topping
 
+class Wrap(MenuItem):
+    def __init__(self, wrap_type: str):
+        super().__init__("Veggie Wrap", 14000, "Tortilla filled with fresh vegetables or steak.")
+        self.wrap_type = wrap_type
+
 class BologneseSpaghetti(MenuItem):
     def __init__(self, pasta_type: str):
         super().__init__("Spaghetti Bolognese", 28000, "Spaghetti, beef tomato sauce, onion, garlic, grated cheese.")
         self.pasta_type = pasta_type
+        
+class BeefSteak(MenuItem):
+    def __init__(self, doneness: str):
+        super().__init__("Beef Steak", 35000, "Grilled beef steak, served with mashed potatoes and seasonal vegetables.")
+        self.doneness = doneness
 
 class Salmon(MenuItem):
     def __init__(self, cooking_style: str):
@@ -74,9 +84,9 @@ order.add_item_order(spaghetti)
 
 print("Total price:", order.total_price(), "COP")
 ```
-## Diagrama de clases 
+## Diagrama de clases
 ```mermaid
-classDiagram
+ classDiagram
     class MenuItem {
         +String name
         +float price
@@ -89,8 +99,14 @@ classDiagram
     class Nachos {
         +String topping
     }
+    class Wrap {
+        +String wrap_type
+    }
     class BologneseSpaghetti {
-        +String pasta_type
+        +String pasta_typ
+    }
+    class BeefSteak {
+        +String doneness
     }
     class Salmon {
         +String cooking_style
@@ -115,6 +131,8 @@ classDiagram
 
     MenuItem <|-- CaesarSalad
     MenuItem <|-- Nachos
+    MenuItem <|-- Wrap
+    MenuItem <|-- BeefSteak
     MenuItem <|-- BologneseSpaghetti
     MenuItem <|-- Salmon
     MenuItem <|-- FruitJuice
